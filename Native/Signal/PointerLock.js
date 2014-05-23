@@ -14,9 +14,9 @@ Elm.Native.PointerLock.make = function(elm) {
   // do not move dx and dy into Elm. By setting their default number
   // of kids, it is possible to detach the mouse listeners if
   // they are not needed.
-  var dx = A2( Signale.lift, function(p){return p._0}, movement);
+  var dx = A2( Signal.lift, function(p){return p._0}, movement);
   dx.defaultNumberOfKids = 0;
-  var dy = A2( Signale.lift, function(p){return p._1}, movement);
+  var dy = A2( Signal.lift, function(p){return p._1}, movement);
   dy.defaultNumberOfKids = 0;
 
   var isLocked = Signal.constant(false);
@@ -28,7 +28,7 @@ Elm.Native.PointerLock.make = function(elm) {
 
   function move(e) {
     var movementX = e.movementX || e.mozMovementX || e.webkitMovementX || 0,
-    var movementY = e.movementY || e.mozMovementY || e.webkitMovementY || 0;
+        movementY = e.movementY || e.mozMovementY || e.webkitMovementY || 0;
     elm.notify(movement.id, (movementX, movementY));
   }
 
@@ -44,7 +44,7 @@ Elm.Native.PointerLock.make = function(elm) {
       node.removeListener('mousemove', move);
       elm.notify(isLocked, false);
     }
-  });
+  }
 
   elm.addListener([isLocked.id], node, 'pointerlockchange', change);
   elm.addListener([isLocked.id], node, 'mozpointerlockchange', change);
