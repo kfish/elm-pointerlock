@@ -4,7 +4,7 @@
     "description": "Implements an unsafeStrafeMonoid in the category of endofragtors",
     "license": "BSD3",
     "exposed-modules": ["PointerLock"],
-    "native-modules": ["Native.SIgnal.PointerLock"],
+    "native-modules": ["Native.Signal.PointerLock"],
     "elm-version": "0.12.3",
     "dependencies": {},
     "repository": "https://github.com/kfish/elm-pointerlock.git"
